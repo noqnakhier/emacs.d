@@ -44,8 +44,21 @@
 (setq-default tab-width 4)
 (setq tab-width 4)
 
+;; 设置在当前行上新增一行快捷键
+(defun smart-open-line-above ()
+  (interactive)
+  (move-beginning-of-line nil)
+  (newline-and-indent)
+  (forward-line -1)
+  (indent-according-to-mode))
+
+(global-set-key [(meta o)] 'smart-open-line-above)
+
+;; =================== linum ========================
 (require 'linum)
 (global-linum-mode t)
+(setq linum-format "%3d ")
+;; ------------------- linum ------------------------
 
 ;;==================== yasnippet ====================
 (el-get-bundle yasnippet)
@@ -93,3 +106,12 @@
 (add-hook 'sgml-mode-hook 'emmet-mode) ;; 任意标记语言的情况下启用
 (add-hook 'css-mode-hook 'emmet-mode) ;; CSS模式下启用
 ;;===================== Emmet mode ===================
+
+;;===================== Markdown Mode ================
+(el-get-bundle markdown-mode)
+(autoload 'markdown-mode "markdown-mode"
+  "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+        
