@@ -1,0 +1,7 @@
+*~
+*.dat
+auto-save-list/
+#*#
+el-get/
+eshell/
+.python-enviroments/
