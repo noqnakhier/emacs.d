@@ -24,6 +24,9 @@
 ; 关闭欢迎界面
 (setq inhibit-startup-message t)
 
+; 关闭自动文件备份
+(setq make-backup-files nil)
+
 ; 将标记的快捷键改为 M-SPC
 (global-unset-key (kbd "C-SPC"))
 (global-set-key (kbd "M-SPC") 'set-mark-command)
@@ -92,13 +95,13 @@
 
 ;;-------------------- auto-complete ----------------
 
-;;==================== auto-complete ================
+;;====================    jedi   =====================
 ;; 注意在第一次安装jedi之后，需要运行以下命令
 ;; M-x jedi:install-server RET
 (el-get-bundle jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
-;;--------------------    jedi   -------------------
+;;--------------------    jedi   ---------------------
 
 ;;===================== Emmet mode ===================
 (el-get-bundle emmet-mode)
@@ -109,9 +112,20 @@
 
 ;;===================== Markdown Mode ================
 (el-get-bundle markdown-mode)
+;; 打开 md, mkd, markdown后缀的文件时自动进入markdown-mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.mkd\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-        
+;;---------------------------------------------------
+
+;;===================== Org Mode =====================
+(setq org-log-down 'time)
+;;---------------------------------------------------
+
+;;===================== edit-server =====================
+;; Chrome TextArea Edit with Emacs
+(el-get-bundle edit-server)
+(require 'edit-server)
+(edit-server-start)
