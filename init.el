@@ -16,8 +16,6 @@
 
 (add-to-list 'el-get-recipe-path "~/.emacs.d/el-get-user/recipes")
 
-(el-get-bundle monokai-theme
-  (load-theme 'monokai t))
 (set-default-font "Monaco 12")
 (set-frame-font "Monaco 12" nil t)
 
@@ -63,11 +61,15 @@
 (setq linum-format "%3d ")
 ;; ------------------- linum ------------------------
 
+(el-get-bundle monokai-theme
+  (load-theme 'monokai t))
+
 ;;==================== yasnippet ====================
 (el-get-bundle yasnippet)
 (el-get-bundle yasnippets)
 
 (require 'yasnippet)
+(require 'yasnippets)
 (setq yas-snippet-dirs
 	'("~/.emacs.d/snippets" ;; personal snippets
 	  "~/.emacs.d/el-get/yasnippets" ;; yasnippets package
@@ -84,21 +86,38 @@
 (add-hook 'after-save-hook 'reload-yasnippets-on-save-snippets)
 ;;-------------------- yasnippet --------------------
 
+;;===================  pos-tip ======================
+
+;;-------------------  pos-tip ----------------------
+
 ;;==================== auto-complete ================
 (el-get-bundle auto-complete)
-(ac-config-default)
+(el-get-bundle auto-complete-clang)
+(el-get-bundle pos-tip)
+(require 'auto-complete)
+(require 'auto-complete-config)
+(require 'auto-complete-clang)
+     
 ; 使用quick-help
 (setq ac-use-quick-help t)
+(setq ac-quick-help-delay 0.3)
 ; 直接显示补全菜单
 (setq ac-auto-show-menu 0)
 (setq ac-ignore-case 'smart)
-
+(setq ac-quick-help-prefer-pos-tip t)
+(global-auto-complete-mode t)
+                                        ; for clang
+(defun my-ac-cc-mode-setup ()
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources)))
+(add-hook 'c-mode-common-hook 'my-ac-cc-mode-setup)
+(ac-config-default)
 ;;-------------------- auto-complete ----------------
 
 ;;====================    jedi   =====================
 ;; 注意在第一次安装jedi之后，需要运行以下命令
 ;; M-x jedi:install-server RET
 (el-get-bundle jedi)
+(require 'jedi)
 (add-hook 'python-mode-hook 'jedi:setup)
 (setq jedi:complete-on-dot t)
 ;;--------------------    jedi   ---------------------
@@ -127,5 +146,4 @@
 ;;===================== edit-server =====================
 ;; Chrome TextArea Edit with Emacs
 (el-get-bundle edit-server)
-(require 'edit-server)
 (edit-server-start)
