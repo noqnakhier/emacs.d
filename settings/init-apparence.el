@@ -6,8 +6,18 @@
 (setq inhibit-startup-message t)
 
 ;; 设置字体
-(set-default-font "Monaco 12")
-(set-frame-font "Monaco 12" nil t)
+(if (eq system-type 'darwin)
+    (progn
+      (set-default-font "Monaco 12")
+      (set-frame-font "Monaco 12" nil t))
+  (if (eq system-type 'windows-nt)
+      (progn
+        (set-default-font "Monaco 12")
+        (set-frame-font "Monaco 12" nil t))
+    (progn
+      (set-default-font "Ubuntu Mono 12")
+      (set-frame-font "Monaco 12" nil t))
+    ))
 
 ;; 设置显示行号，使用linum包
 (require 'linum)
