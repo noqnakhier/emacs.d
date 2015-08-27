@@ -1,3 +1,4 @@
+(require-package 'auto-complete-clang)
 (require 'auto-complete-clang)
 
 (defun my-ac-cc-mode-setup ()

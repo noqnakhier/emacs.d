@@ -1,11 +1,7 @@
 (require-package 'yasnippet)
 (require 'yasnippet)
-(setq yas-snippet-dirs
-	'("~/.emacs.d/snippets" ;; personal snippets
-	  "~/.emacs.d/el-get/yasnippets" ;; yasnippets package
-	  "~/.emacs.d/el-get/yasnippet/snippets" ;; default snippets
-
-	))
+(setq yas-snippet-dirs (append yas-snippet-dirs
+                               '("~/.emacs.d/snippets"))) ;; personal snippets
 (yas-global-mode 1)
 
 ;; automatic reload after snippets changed
