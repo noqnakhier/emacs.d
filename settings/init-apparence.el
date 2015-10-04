@@ -5,28 +5,23 @@
 ;; 关闭欢迎界面
 (setq inhibit-startup-message t)
 
-;; 设置字体
-;; Mac OS
-(if (eq system-type 'darwin)
-    (progn
-      (set-default-font "Menlo 12")
-      (set-frame-font "Menlo 12" nil t))
-;; Windows
-  (if (eq system-type 'windows-nt)
-      (progn
-        (set-default-font "Consolas 10")
-        (set-frame-font "Consolas 10" nil t))
-;; Linux
-    (progn
-      (set-default-font "Ubuntu Mono 12")
-      (set-frame-font "Ubuntu Mono 12" nil t))
-    ))
+
 
 ;; 设置中文字体，使用chinese-fonts-setup包
 (require-package 'chinese-fonts-setup)
 (require 'chinese-fonts-setup)
-;;(setq cfs-profiles
-  ;;    '("program" "org-mode" "read-book"))
+(setq cfs-profiles
+      '("mac" "ubuntu" "windows"))
+;; 设置字体
+;; Mac OS
+(if (eq system-type 'darwin)
+    (setq cfs--current-profile-name "mac"))
+;; Windows
+(if (eq system-type 'windows-nt)
+    (setq cfs--current-profile-name "windows"))
+;; Linux
+(if (eq system-type 'gnu/linux)
+    (setq cfs--current-profile-name "ubuntu"))
 
 ;; 设置显示行号，使用linum包
 (require 'linum)
