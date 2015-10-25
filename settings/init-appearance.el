@@ -28,9 +28,10 @@
 (global-linum-mode t)
 (setq linum-format "%3d ")
 
-;; 使用monokai主题
+
+;; 使用solarized主题
 (require-package 'monokai-theme)
-(load-theme 'monokai t)
+(if window-system
+    (load-theme 'monokai t))
 
-
-(provide 'init-apparence)
+(provide 'init-appearance)
