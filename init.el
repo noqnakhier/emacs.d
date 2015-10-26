@@ -34,7 +34,7 @@
 (require 'init-company-mode)
 ;(require 'init-autocomplete)
 (require 'init-cc-mode)
-(require 'init-jedi)
+(require 'init-python)
 (require 'init-web-mode)
 (require 'init-markdown-mode)
 (require 'init-orgmode)

@@ -10,6 +10,11 @@
 (add-hook 'c-mode-hook 'my:flymake-google-init)
 (add-hook 'c++-mode-hook 'my:flymake-google-init)
 
+(require-package 'google-c-style)
+(require 'google-c-style)
+(add-hook 'c-mode-common-hook 'google-set-c-style)
+(add-hook 'c-mode-common-hook 'google-make-newline-indent)
+
 
 ;; irony
 ;; On Ubuntu install libclang-dev package.
@@ -31,6 +36,7 @@
 (add-hook 'irony-mode-hook 'my-irony-mode-hook)
 (add-hook 'irony-mode-hook 'irony-cdb-autosetup-compile-options)
 
+(require-package 'company-irony)
 (eval-after-load 'company 
   '(add-to-list 'company-backends 'company-irony))
 
