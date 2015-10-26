@@ -2,14 +2,20 @@
 (require-package 'flymake-cursor)
 (defun my:flymake-google-init()
   (require 'flymake-google-cpplint)
+  ;; pip install cpplint
   (custom-set-variables
    '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
-  (flymake-google-cpplint-load)
-  )
+  (flymake-google-cpplint-load))
 
 (add-hook 'c-mode-hook 'my:flymake-google-init)
 (add-hook 'c++-mode-hook 'my:flymake-google-init)
 
+
+;; irony
+;; On Ubuntu install libclang-dev package.
+;; On Mac OS X use homebrew to install "llvm --with-clang",
+;; and add -DCMAKE_PREFIX_PATH=/usr/local/opt/llvm to 
+;; `irony-install-server` command.
 (require-package 'irony)
 (add-hook 'c++-mode-hook 'irony-mode)
 (add-hook 'c-mode-hook 'irony-mode)
