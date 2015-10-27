@@ -7,7 +7,7 @@
 (define-key global-map (kbd "C-c ;") 'iedit-mode)
 
 (require-package 'w3m)
-(setq w3m-default-display-inline-images t)
+
 (setq browse-url-browser-function 'w3m-browse-url
           browse-url-new-window-flag t)
 (autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
@@ -16,4 +16,7 @@
 (global-set-key "\C-xu" 'browse-url)
 (setq w3m-use-cookies t)
 
+(require 'mime-w3m)
+(setq w3m-default-display-inline-images t)
+(setq w3m-default-toggle-inline-images t)
 (provide 'init-misc)
