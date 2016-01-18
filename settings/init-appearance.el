@@ -28,10 +28,7 @@
 (global-linum-mode t)
 (setq linum-format "%3d ")
 
-
-;; 使用solarized主题
-(require-package 'monokai-theme)
+(require-package 'dracula-theme)
 (if window-system
-    (load-theme 'monokai t))
-
+    (load-theme 'dracula t))
 (provide 'init-appearance)

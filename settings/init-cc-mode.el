@@ -1,10 +1,11 @@
+(require-package 'cmake-mode)
+
 (require-package 'flymake-google-cpplint)
 (require-package 'flymake-cursor)
 (defun my:flymake-google-init()
   (require 'flymake-google-cpplint)
   ;; pip install cpplint
-  (custom-set-variables
-   '(flymake-google-cpplint-command "/usr/local/bin/cpplint"))
+  (setq flymake-google-cpplint-command "/usr/local/bin/cpplint")
   (flymake-google-cpplint-load))
 
 (add-hook 'c-mode-hook 'my:flymake-google-init)
@@ -44,4 +45,6 @@
 ;; trigger completion at interesting places, such as after scope operator
 ;;     std::|
 (add-hook 'irony-mode-hook 'company-irony-setup-begin-commands)
+
+
 (provide 'init-cc-mode)

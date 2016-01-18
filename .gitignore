@@ -7,3 +7,4 @@ eshell/
 .python-environments/
 elpa/
 irony/
+.DS_Store
