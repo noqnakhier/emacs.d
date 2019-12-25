@@ -8,3 +8,6 @@ eshell/
 elpa/
 irony/
 .DS_Store
+*.data
+cnfonts/
+custom.el
