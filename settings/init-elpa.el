@@ -1,6 +1,6 @@
 ;; init-elpa.el
 (require 'package)
-;; 增加软件包仓库
+;; 增加软件包仓库,使用stable，并且切换到中科大在镜像
 (setq package-archives '(("gnu" . "https://mirrors.ustc.edu.cn/elpa/gnu/")
                          ("melpa-stable" . "https://mirrors.ustc.edu.cn/elpa/melpa-stable/")
                          ("org" . "https://mirrors.ustc.edu.cn/elpa/org/")))
