@@ -18,6 +18,8 @@
 (require 'init-appearance)
 (require 'init-yasnippet)
 (require 'init-company-mode)
+(require 'init-lsp-mode)
+;;(require 'init-go-mode)
 ;;(require 'init-cc-mode)
 ;;(require 'init-python)
 ;;(require 'init-web-mode)
@@ -40,20 +42,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-(set-face-attribute
- 'default nil
- :font (font-spec :name "-outline-Consolas-bold-italic-normal-mono-*-*-*-*-c-*-iso10646-1"
-                  :weight 'normal
-                  :slant 'normal
-                  :size 9.0))
-(dolist (charset '(kana han symbol cjk-misc bopomofo))
-  (set-fontset-font
-   (frame-parameter nil 'font)
-   charset
-   (font-spec :name "-outline-黑体-normal-normal-normal-mono-*-*-*-*-c-*-iso10646-1"
-              :weight 'normal
-              :slant 'normal
-              :size 10.5)))
 
 (require-package 'evil)
 (require 'evil)
