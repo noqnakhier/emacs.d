@@ -1,4 +1,10 @@
+;; init-orgmode
+
+;; htmlize用于输出html
+(require-package 'htmlize)
 ;;(setq org-log-down 'time)
+
+
 (define-key global-map "\C-cl" 'org-store-link)
 (define-key global-map "\C-ca" 'org-agenda)
 (setq org-log-done t)
@@ -12,6 +18,7 @@
 (autoload 'iimage-mode "iimage" "Support Inline image minor mode." t)
 (autoload 'turn-on-iimage-mode "iimage" "Turn on inline image minor mode." t)
 
+;; 用于快捷拥入源代码块的函数
 (defun org-insert-src-block (src-code-type)
   "Insert a `SRC-CODE_TYPE' type source code block in org-mode."
   (interactive
@@ -20,7 +27,7 @@
             "calc" "asymptote" "dot" "gnuplot" "ledger" "lilypond" "mscgen"
             "octave" "oz" "plantuml" "R" "sass" "screen" "sql" "awk" "ditaa"
             "haskell" "latex" "lisp" "matlab" "ocaml" "org" "perl" "ruby"
-            "scheme" "sqlite")))
+            "scheme" "sqlite" "go")))
      (list (ido-completing-read "Source code type: " src-code-types))))
   (progn
     (newline-and-indent)
@@ -39,6 +46,7 @@
                                            'org-insert-src-block)
                             ))
 
+;; 在源代码块中使用语法高亮
 (setq org-src-fontify-natively t)
 (provide 'init-orgmode)
 
