@@ -15,6 +15,7 @@
 
 (require 'init-elpa)
 (require 'init-basic)
+(require 'init-fonts)
 (require 'init-appearance)
 (require 'init-yasnippet)
 (require 'init-company-mode)
